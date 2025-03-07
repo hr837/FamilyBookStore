@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duang.book.mapper.BookMapper">
+    <select id="getBooks" parameterType="Book" resultType="Book">
+        select id, name, author
+        from book
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <!--名称为null和空字符串过滤-->
+            <if test="name != null and name != ''">
+                <!--重新计算出like的值，计算放在这里的原因是需要判空处理-->
+                <!--这里的name直接取值，不需要任何插值符号。-->
+                <bind name="likeName" value="'%'+ name +'%'"/>
+                and name like #{likeName}
+            </if>
+            <if test="author != null and author != ''">
+                <bind name="likeAuthor" value="'%'+ author +'%'"/>
+                and author like #{likeAuthor}
+            </if>
+        </where>
+    </select>
+</mapper>
