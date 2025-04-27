@@ -2,7 +2,6 @@ package com.duang.book.mapper;
 
 import com.duang.book.model.Book;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
