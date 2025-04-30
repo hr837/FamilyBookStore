@@ -29,6 +29,8 @@
 	<properties>
 		<java.version>21</java.version>
 		<mybatis.version>3.0.4</mybatis.version>
+		<openapi.version>2.3.0</openapi.version>
+		<page-helper.version>2.1.0</page-helper.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -79,8 +81,14 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.3.0</version>
+			<version>${openapi.version}</version>
 		</dependency>
+		<!--添加分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${page-helper.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>
